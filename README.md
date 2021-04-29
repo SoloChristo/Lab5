@@ -1,7 +1,8 @@
 # CSE110 SP21 Lab 5
 
 ## Author(s):
-- YOUR NAME
+- Alec Smith 
+- Jason Sather 
 
 ## Part 1:
 
