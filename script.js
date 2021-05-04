@@ -22,7 +22,7 @@ photo_input.addEventListener('change', () => {
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
-  let canvas = document.getElementById("main canvas");
+  let canvas = document.getElementById("user-image");
   let ctx = canvas.getContext("2d");
   // var ctx = c.getContext("2d");
   ctx.fillStyle = "red";
