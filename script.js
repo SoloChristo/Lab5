@@ -87,21 +87,18 @@ read.addEventListener('click', (e) => {
 
   switch (vol) {
     case (vol >= 67 || vol <= 100):
-      img2.src = "icons/volume-level-3.svg";
+      img2.src = "./icons/volume-level-3.svg";
       break;
     case (vol >= 34 || vol <= 66):
-      img2.src = "icons/volume-level-2.svg";
+      img2.src = "./icons/volume-level-2.svg";
       break;
     case (vol >= 1 || vol <= 33):
-      img2.src = "icons/volume-level-1.svg";
+      img2.src = "./icons/volume-level-1.svg";
       break;
     default:
-      img2.src = "icons/volume-level-0.svg";
+      img2.src = "./icons/volume-level-0.svg";
       break;
   }
-  var container = document.getElementById("volume-group");
-  var content = container.innerHTML;
-  container.innerHTML = content;
 
   let utterance1 = new SpeechSynthesisUtterance(document.getElementById('text-top').value);
   utterance1.volume = vol / 100;
