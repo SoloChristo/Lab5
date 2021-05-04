@@ -22,11 +22,17 @@ photo_input.addEventListener('change', () => {
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
-  let canvas = document.getElementById("user-image");
-  let ctx = canvas.getContext("2d");
-  // var ctx = c.getContext("2d");
-  ctx.fillStyle = "red";
+  // let canvas = document.getElementById("user-image");
+  // // let ctx = canvas.getContext("2d");
+  // if (canvas.getContext) {
+  //   let ctx = canvas.getContext('2d');
+  //   console.log("lmao");
+  //   ctx.fillStyle = 'rgb(200, 0, 0)';
+  //   ctx.fillRect(10, 10, 50, 50);
 
+  //   ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
+  //   ctx.fillRect(30, 30, 50, 50);
+  // }
   //Taking care of the canvas
   //const canvas = document.getElementById('user-image');
   wipeCanvas();
@@ -45,7 +51,7 @@ img.addEventListener('load', () => {
   // - If you draw the image to canvas here, it will update as soon as a new image is selected
 });
 
-//This event handler will take the text and then put it into the top texxt and bottom text :)
+//This event handler will take the text and then put it into the top text and bottom text :)
 submit.addEventListener('click', (e) => {
   e.preventDefault();
   drawText();
@@ -63,10 +69,9 @@ clear.addEventListener('click', (e) => {
 read.addEventListener('click', (e) => {
   e.preventDefault();
 
-  var synth = window.speechSynthesis;
-
-  var utterance1 = new SpeechSynthesisUtterance('How about we say this now? This is quite a long sentence to say.');
-  var utterance2 = new SpeechSynthesisUtterance('We should say another sentence too, just to be on the safe side.');
+  let synth = window.speechSynthesis;
+  let utterance1 = new SpeechSynthesisUtterance(document.getElementById('text-top').value);
+  let utterance2 = new SpeechSynthesisUtterance(document.getElementById('text-bottom').value);
   
   synth.speak(utterance1);
   //window.speechSynthesis.cancel();
