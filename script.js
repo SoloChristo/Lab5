@@ -55,7 +55,6 @@ clear.addEventListener('click', (e) => {
   ctx.clearRect(0,0, canvas.width, canvas.height);
   document.getElementById('text-top').value = "";
   document.getElementById('text-bottom').value = "";
-
   enableButtonsClear();
 });
 
@@ -72,7 +71,9 @@ read.addEventListener('click', (e) => {
   //window.speechSynthesis.cancel();
 });
 
+range.addEventListener('', (e) => {
 
+});
 
 function drawText(){
   //const ctx = canvas.getContext('2d');
@@ -104,7 +105,8 @@ function enableButtonsImgLoad(){
   read.disabled = true;
 }
 function enableButtonsSubmit(){
-  submit.disabled = true;
+  // submit.disabled = true;
+  submit.disabled = false;
   clear.disabled =false;
   read.disabled = false;
 }
