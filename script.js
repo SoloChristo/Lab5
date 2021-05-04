@@ -35,6 +35,7 @@ img.addEventListener('load', () => {
   //Now we should enable or disable buttons :)
   enableButtonsImgLoad();
 
+  populateVoiceList();
   // Some helpful tips:
   // - Fill the whole Canvas with black first to add borders on non-square images, then draw on top
   // - Clear the form when a new image is selected
@@ -61,18 +62,57 @@ clear.addEventListener('click', (e) => {
 read.addEventListener('click', (e) => {
   e.preventDefault();
 
+  // document.querySelector("volume-group").volume = 0.7;
   let synth = window.speechSynthesis;
+
+  // utterance1.volume = $('#volume-group').find('input').value;
+
+  var in2 = HTMLCollection;
+  var img2 = HTMLCollection;
+
+  let searchEles = document.getElementById("volume-group").children;
+  for (var i = 0; i < searchEles.length; ++i) {
+    if (searchEles[i].tagName == 'input' || searchEles[i].tagName == 'INPUT') {
+      in2 = searchEles[i];
+    }
+
+    if (searchEles[i].tagName == 'img') {
+      img2 = searchEles[i];
+    }
+
+  }
+
+  // if (in2.value )
+  let vol = in2.value;
+
+  switch (vol) {
+    case (vol >= 67 || vol <= 100):
+      img2.src = "icons/volume-level-3.svg";
+      break;
+    case (vol >= 34 || vol <= 66):
+      img2.src = "icons/volume-level-2.svg";
+      break;
+    case (vol >= 1 || vol <= 33):
+      img2.src = "icons/volume-level-1.svg";
+      break;
+    default:
+      img2.src = "icons/volume-level-0.svg";
+      break;
+  }
+  var container = document.getElementById("volume-group");
+  var content = container.innerHTML;
+  container.innerHTML = content;
+
   let utterance1 = new SpeechSynthesisUtterance(document.getElementById('text-top').value);
+  utterance1.volume = vol / 100;
+
   let utterance2 = new SpeechSynthesisUtterance(document.getElementById('text-bottom').value);
-  
+  utterance2.volume = vol / 100;
+
   synth.speak(utterance1);
   //window.speechSynthesis.cancel();
   synth.speak(utterance2);
   //window.speechSynthesis.cancel();
-});
-
-range.addEventListener('', (e) => {
-
 });
 
 function drawText(){
@@ -141,7 +181,7 @@ function populateVoiceList() {
   }
 }
 
-populateVoiceList();
+// populateVoiceList();
 if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.onvoiceschanged = populateVoiceList;
 }
